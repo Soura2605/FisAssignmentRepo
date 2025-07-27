@@ -16,32 +16,20 @@ public class WebDriverManager {
 
     }
 
-    public static WebDriver getDriver(){
-        return driverThreadLocal.get();
-    }
 
-    public static void setDriver(String browser){
-        WebDriver driver = createDriver(browser);
-        configureDriver(driver);
-        driverThreadLocal.set(driver);
-    }
-
-    public static void quitDriver(){
-        WebDriver driver = driverThreadLocal.get();
-
-        if(driver!=null){
-            driver.quit();
-            driverThreadLocal.remove();
-        }
-    }
 
     public static WebDriver createDriver(String browser){
-
-        if(browser.equalsIgnoreCase("Chrome")){
+        if(browser.equalsIgnoreCase("chrome")){
             return createChromeDriver();
         }
+        throw new IllegalArgumentException("Unsupported Browser: " + browser);
+    }
 
-        throw new IllegalArgumentException("Unsupported Browser"+browser);
+    public static void configureDriver(WebDriver driver){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICIT_WAIT_TIMEOUT));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(PAGE_LOAD_TIMEOUT));
+        driver.manage().window().maximize();
+
     }
 
     private static WebDriver createChromeDriver(){
@@ -53,12 +41,31 @@ public class WebDriverManager {
         return new ChromeDriver(options);
     }
 
-    public static void configureDriver(WebDriver driver){
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICIT_WAIT_TIMEOUT));
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(PAGE_LOAD_TIMEOUT));
-        driver.manage().window().maximize();
-
+    public static WebDriver getDriver(){
+        return driverThreadLocal.get();
     }
+
+    public static void setDriver(String browser){
+        WebDriver driver = createDriver(browser);
+        configureDriver(driver);
+        driverThreadLocal.set(driver);
+        System.out.println("WebDriver created: " + driver);
+    }
+
+    public static void quitDriver(){
+        WebDriver driver = getDriver();
+
+        if(driver!=null){
+            driver.quit();
+            driverThreadLocal.remove();
+        }
+    }
+
+
+
+
+
+
 
 
 

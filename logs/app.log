@@ -1,0 +1,12 @@
+2025-07-27 18:29:08 [main] INFO  automation.hooks.Hooks - Setting up WebDriver
+2025-07-27 18:29:09 [main] INFO  automation.hooks.Hooks - WebDriver setup complete for browser: chrome
+2025-07-27 18:29:09 [main] INFO  automation.hooks.Hooks - Before hook executed
+2025-07-27 18:29:09 [main] INFO  automation.stepdefinitions.AssignmentSteps - Navigating to Ebay URL
+2025-07-27 18:29:09 [main] INFO  org.automation.utils.TestDataReader - Config properties loaded successfully from src/test/java/automation/resources/config/config.properties
+2025-07-27 18:29:10 [main] INFO  automation.stepdefinitions.AssignmentSteps - Successfully navigated to Ebay URL
+2025-07-27 18:29:10 [main] INFO  automation.stepdefinitions.AssignmentSteps - Searching for item on Ebay
+2025-07-27 18:29:14 [main] INFO  automation.stepdefinitions.AssignmentSteps - Search completed for item: book
+2025-07-27 18:29:14 [main] INFO  automation.stepdefinitions.AssignmentSteps - Selecting product at position: 1
+2025-07-27 18:29:14 [main] INFO  automation.stepdefinitions.AssignmentSteps - Product selected at position: 1
+2025-07-27 18:29:19 [main] INFO  automation.stepdefinitions.AssignmentSteps - User is on Product Details Page
+2025-07-27 18:29:19 [main] INFO  automation.hooks.Hooks - Cleaning up WebDriver
